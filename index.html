@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Bhojnalya - Menu Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe6e6 100%);
+            padding: 20px;
+        }
+        
+        .menu-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chef-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .hotel-name-mr {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .hotel-name-en {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .menu-section {
+            padding: 40px 30px;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(249,115,22,0.3);
+        }
+        
+        .menu-items {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .menu-item {
+            background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+            padding: 20px 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f97316;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .item-name-mr {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        
+        .item-name-en {
+            font-size: 16px;
+            color: #6b7280;
+        }
+        
+        .item-price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ea580c;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+        
+        .qr-section {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .qr-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .qr-placeholder {
+            width: 250px;
+            height: 250px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #6b7280;
+            border: 3px dashed #d1d5db;
+            border-radius: 10px;
+        }
+        
+        .scan-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .scan-subtitle {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .scan-subtitle-en {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .qr-footer {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .footer {
+            background: #ea580c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .menu-card {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hotel-name-mr {
+                font-size: 36px;
+            }
+            .hotel-name-en {
+                font-size: 24px;
+            }
+            .contact-info {
+                font-size: 14px;
+                gap: 15px;
+            }
+            .category-title {
+                font-size: 22px;
+            }
+            .item-name-mr {
+                font-size: 18px;
+            }
+            .item-price {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-card">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="chef-icon">👨‍🍳</div>
+                <div class="hotel-name-mr">हॉटेल भोजनालय</div>
+                <div class="hotel-name-en">Hotel Bhojnalya</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        📍 Kolhapur, Maharashtra
+                    </div>
+                    <div class="contact-item">
+                        📞 9284969878
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Section -->
+        <div class="menu-section">
+            <!-- Veg Category -->
+            <div class="category">
+                <div class="category-title">🥗 शाकाहारी / Vegetarian</div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">पनीर बटर मसाला</div>
+                            <div class="item-name-en">Paneer Butter Masala</div>
+                        </div>
+                        <div class="item-price">₹180</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">वेज कोल्हापुरी</div>
+                            <div class="item-name-en">Veg Kolhapuri</div>
+                        </div>
+                        <div class="item-price">₹160</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">डाळ तडका</div>
+                            <div class="item-name-en">Dal Tadka</div>
+                        </div>
+                        <div class="item-price">₹120</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">मिक्स व्हेज</div>
+                            <div class="item-name-en">Mix Veg</div>
+                        </div>
+                        <div class="item-price">₹140</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">पालक पनीर</div>
+                            <div class="item-name-en">Palak Paneer</div>
+                        </div>
+                        <div class="item-price">₹170</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Non-Veg Category -->
+            <div class="category">
+                <div class="category-title">🍗 मांसाहारी / Non-Vegetarian</div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">चिकन कोल्हापुरी</div>
+                            <div class="item-name-en">Chicken Kolhapuri</div>
+                        </div>
+                        <div class="item-price">₹220</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">मटण रस्सा</div>
+                            <div class="item-name-en">Mutton Rassa</div>
+                        </div>
+                        <div class="item-price">₹280</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">तांबडा रस्सा</div>
+                            <div class="item-name-en">Tambda Rassa</div>
+                        </div>
+                        <div class="item-price">₹250</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">फिश फ्राय</div>
+                            <div class="item-name-en">Fish Fry</div>
+                        </div>
+                        <div class="item-price">₹200</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">चिकन थाळी</div>
+                            <div class="item-name-en">Chicken Thali</div>
+                        </div>
+                        <div class="item-price">₹180</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rice Category -->
+            <div class="category">
+                <div class="category-title">🍚 भात / Rice</div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">वेज बिर्याणी</div>
+                            <div class="item-name-en">Veg Biryani</div>
+                        </div>
+                        <div class="item-price">₹150</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">चिकन बिर्याणी</div>
+                            <div class="item-name-en">Chicken Biryani</div>
+                        </div>
+                        <div class="item-price">₹200</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">जिरे भात</div>
+                            <div class="item-name-en">Jeera Rice</div>
+                        </div>
+                        <div class="item-price">₹100</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">साधा भात</div>
+                            <div class="item-name-en">Plain Rice</div>
+                        </div>
+                        <div class="item-price">₹80</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roti Category -->
+            <div class="category">
+                <div class="category-title">🫓 रोटी / Roti</div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">चपाती</div>
+                            <div class="item-name-en">Chapati</div>
+                        </div>
+                        <div class="item-price">₹15</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">भाकरी</div>
+                            <div class="item-name-en">Bhakri</div>
+                        </div>
+                        <div class="item-price">₹20</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">नान</div>
+                            <div class="item-name-en">Naan</div>
+                        </div>
+                        <div class="item-price">₹30</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <div class="item-name-mr">पराठा</div>
+                            <div class="item-name-en">Paratha</div>
+                        </div>
+                        <div class="item-price">₹40</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <div class="qr-box">
+                <div class="qr-placeholder">
+                    Place Your<br>QR Code Here
+                </div>
+            </div>
+            <div class="scan-title">📱 Scan Me</div>
+            <div class="scan-subtitle">संपूर्ण मेनू बघण्यासाठी स्कॅन करा</div>
+            <div class="scan-subtitle-en">Scan for Complete Menu</div>
+            <div class="qr-footer">
+                <p>स्वादिष्ट जेवणाचा अनुभव घ्या | Experience Delicious Food</p>
+                <p style="margin-top: 10px;">Powered by MenuSpeak 9284969878</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            आमच्याकडे येण्यासाठी धन्यवाद! | Thank You for Visiting!
+        </div>
+    </div>
+</body>
+</html>
